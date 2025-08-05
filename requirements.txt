@@ -1,0 +1,8 @@
+pandas
+sqlalchemy
+watchdog
+streamlit
+google-generativeai
+python-dotenv
+psycopg2-binary
+
