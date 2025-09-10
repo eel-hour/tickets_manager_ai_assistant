@@ -183,7 +183,7 @@ def _query_entries(session, args):
         query = query.filter(LogEntry.time.ilike(f"%{time_val}%"))
     
     # Handle other filters
-    for col in ['policy_identity', 'internal_ip', 'external_ip', 'action', 'destination']:
+    for col in ['policy_identity', 'internal_ip', 'external_ip', 'action', 'destination', 'categories']:
         if col in args:
             col_attr = getattr(LogEntry, col)
             query = query.filter(col_attr.ilike(f"%{args[col]}%"))
@@ -303,6 +303,7 @@ if prompt := st.chat_input("Ask your question…"):
         "  - 'action': action type (e.g., 'Blocked', 'Allowed')\n"
         "  - 'destination': destination URL/domain\n"
         "  - 'policy_identity': policy name\n"
+	"  - 'categories' : blocking category\n"
         "You can combine multiple filters in one query!\n\n"
         "Examples:\n"
         "  User: How many entries from 29/07/2025?\n"
